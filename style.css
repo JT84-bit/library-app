@@ -3,6 +3,18 @@
   src: url("fonts/odstemplik/odstemplikBold.ttf");
 } 
 
+@media screen and (max-width:800px){
+  .book {
+    background-size: cover;
+    background-attachment: fixed;
+  }
+}
+
+html, body {
+  margin: 0;
+ 
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -23,7 +35,10 @@ body {
 
 .book {
   background-image: url(img/book.jpg);
-  background-size: 100% 100%;
+  background-size: 60vw 90vh;
+  width: calc(60vw - 100px);
+  height: 90vh;
+  background-position: center, center;
 }
 
 .library{
@@ -110,8 +125,10 @@ input {
 }
 
 .addedBooks p {
+  font-family:'Times New Roman', Times, serif;
   font-size: 20px;
   margin-top: 5px;
+  margin-left: 20px;
 }
 
 .addedBooks button {
