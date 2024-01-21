@@ -43,7 +43,7 @@ body {
 
 .add-form {
   display: grid;
-  grid-template-rows: repeat(auto-fit), 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(auto-fit, 1fr 1fr 1fr 1fr 1fr);
   justify-content: start;
 }
 
