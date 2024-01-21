@@ -29,18 +29,21 @@ loginForm.addEventListener("submit", (e) => {
 
 });
 
-
 function Book (title, author, nroPages, hasRead) {
   this.title = title;
   this.author = author;
   this.nroPages = nroPages;
   this.hasRead = hasRead;
 
+  this.read = function () {
+    return this.hasRead
+  };
+
   this.info = function() {
-    if(!hasRead){
+    if(!this.hasRead){
       return (`${title} by ${author}, ${nroPages} pages, not read yet`)
     }else{
-      return (`${title} by ${author}, ${nroPages} pages, have read`)
+      return (`${title} by ${author}, ${nroPages} pages, have been read`)
     }
   }
 }; 
@@ -63,6 +66,15 @@ function populate(){
     button.addEventListener("click", () => removeBookFromLibrary(i)); 
     text = document.createTextNode(newBook);
     p.appendChild(text);
+
+    if(!book.read()){
+      const button2 = document.createElement("button")
+      button2.textContent = "Read"
+      button2.classList.add("read");
+      button2.addEventListener("click", () => changeReadStatus(i)); 
+      p.appendChild(button2)
+    }
+
     p.appendChild(button);
     shelf.appendChild(p);
   }
@@ -80,5 +92,10 @@ function removeBookFromLibrary (index) {
 
   myLibrary.splice(index, 1)
   populate();
+}
 
+function changeReadStatus (index) {
+  book = myLibrary[index];
+  book.hasRead = true;
+  populate();
 }
